@@ -1,3 +1,5 @@
+import os
+import shutil
 import unittest
 import numpy as np
 
@@ -7,15 +9,15 @@ from video_razor.razor import VideoRazor
 class TestVideoRazor(unittest.TestCase):
 
     def setUp(self):
-        # TODO: Create output folder and test that videos output <----
+        if not os.path.exists('tests/output'):
+            os.makedirs('tests/output')
         self.input = 'tests/test_data/test.mp4'
         self.output = 'tests/output/out'
         self.slices = 3
         self.razor = VideoRazor(self.input, self.output, self.slices)
 
     def tearDown(self) -> None:
-        # TODO: Delete output folder and files
-        pass
+        shutil.rmtree('tests/output', ignore_errors=True)
 
     def test_initial_values(self):
         assert self.razor.input_path == self.input
@@ -70,10 +72,20 @@ class TestVideoRazor(unittest.TestCase):
         self.assertEqual(self.razor.get_num_videos(), len(self.razor.split_frames_list()))
 
     def test_create_videos(self):
-        pass
+        # Get h, w of video sections
+        roi_h, roi_w = self.razor.get_roi_measurements()
+        # Init list of Nones length of list
+        out_videos = self.razor.init_video_writer_list()
+        # Split list into list of lists
+        frames_split = self.razor.split_frames_list()
+        self.razor.create_videos(frames_split, out_videos, roi_w, roi_h)
+        len_dir = len(os.listdir('tests/output'))
+        self.assertEqual(len_dir, self.razor.get_num_videos())
 
     def test_slice(self):
-        pass
+        self.razor.slice()
+        len_dir = len(os.listdir('tests/output'))
+        self.assertEqual(len_dir, self.razor.get_num_videos())
 
 
 if __name__ == '__main__':
