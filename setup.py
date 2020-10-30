@@ -14,7 +14,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/5starkarma/video-razor",
-    download_url='https://github.com/5starkarma/video-razor/archive/0.0.2.tar.gz',
+    download_url='https://github.com/5starkarma/video-razor/archive/0.0.3.tar.gz',
     keywords=['OPENCV', 'VIDEO', 'CUT', 'SLICE', 'RAZOR'],
     install_requires=[
         'numpy',

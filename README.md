@@ -26,8 +26,12 @@ The class input file name, output file name, and the cross sections you'd like t
 
 The output file name should **NOT** contain a suffix as this will be appended during processing.
 ```
-input_file = 'data/input/sample.mp4'
-output = 'data/output/out'
-razor = VideoRazor(input_file, output, 3)
-razor.slice()
+from video_razor import VideoRazor
+
+
+if __name__ == '__main__':
+    input_file = 'cards.mp4'
+    output = 'out/out'
+    razor = VideoRazor(input_file, output, 3)
+    razor.slice()
 ```
