@@ -20,8 +20,7 @@ class TestVideoRazor(unittest.TestCase):
             VideoRazor(1, 1, 1)
 
     def test_get_frames(self):
-        assert isinstance(self.razor.get_frames(), (list, np.ndarray))
-        assert isinstance(self.razor.get_frames()[0], (list, np.ndarray))
+        assert isinstance(self.razor.get_frames(), list)
         assert hasattr(self.razor.get_frames(), '__len__')
 
     def test_get_roi_measurements(self):
