@@ -4,9 +4,9 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="video-razor",
-    packages=['video-razor'],
-    version="0.0.2",
+    name="video_razor",
+    packages=['video_razor'],
+    version="0.0.3",
     license='MIT',
     author="David Alford",
     author_email="firstlast678@gmail.com",
