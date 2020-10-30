@@ -25,8 +25,8 @@ class VideoRazor:
         Extracts each frame of the video to a list.
         :return:
         -------
-        images : list
-            Images which make up a video
+        frames : list
+            Frames which make up a video
         """
         # Read video
         cap = cv2.VideoCapture(self.input_path)
@@ -53,10 +53,18 @@ class VideoRazor:
         return map(lambda x: x / self.splits, self.get_frames()[0].shape[:2])
 
     def get_roi(self):
+        """
+        Gets region of interest for each frame in the list of frames
+        and appends it to a new list of frames.
+        :return:
+        -------
+        frames : list
+            A list of frames
+        """
         # Get h, w of video sections
         roi_h, roi_w = self.get_roi_measurements()
         # split frames into sections
-        frames = []
+        frames = list()
         # For each horizontal section
         for i in range(0, self.splits):
             # For each vertical section
