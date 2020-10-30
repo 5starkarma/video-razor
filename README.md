@@ -4,12 +4,11 @@
 
 1 | 2 | 3
 :-------------------------:|:-------------------------:|:-------------------------:
-![alt text](https://github.com/5starkarma/face-smoothing/blob/main/data/images/hillary_clinton.jpg?raw=true "Input image")  |  ![alt text](https://github.com/5starkarma/face-smoothing/blob/main/data/output/output_0.jpg?raw=true "Output image") |  ![alt text](https://github.com/5starkarma/face-smoothing/blob/main/data/output/output_0.jpg?raw=true "Output image")
+![alt text](https://github.com/5starkarma/video-razor/blob/master/data/examples/section-1.png?raw=true "Input image")  |  ![alt text](https://github.com/5starkarma/video-razor/blob/master/data/examples/section-2.png?raw=true "Output image") |  ![alt text](https://github.com/5starkarma/video-razor/blob/master/data/examples/section-3.png?raw=true "Output image")
 4 | 5 | 6
-![alt text](https://github.com/5starkarma/face-smoothing/blob/main/data/images/hillary_clinton.jpg?raw=true "Input image")  |  ![alt text](https://github.com/5starkarma/face-smoothing/blob/main/data/output/output_0.jpg?raw=true "Output image") |  ![alt text](https://github.com/5starkarma/face-smoothing/blob/main/data/output/output_0.jpg?raw=true "Output image")
+![alt text](https://github.com/5starkarma/video-razor/blob/master/data/examples/section-4.png?raw=true "Input image")  |  ![alt text](https://github.com/5starkarma/video-razor/blob/master/data/examples/section-5.png?raw=true "Output image") |  ![alt text](https://github.com/5starkarma/video-razor/blob/master/data/examples/section-6.png?raw=true "Output image")
 7 | 8 | 9
-![alt text](https://github.com/5starkarma/face-smoothing/blob/main/data/images/hillary_clinton.jpg?raw=true "Input image")  |  ![alt text](https://github.com/5starkarma/face-smoothing/blob/main/data/output/output_0.jpg?raw=true "Output image") |  ![alt text](https://github.com/5starkarma/face-smoothing/blob/main/data/output/output_0.jpg?raw=true "Output image")
-
+![alt text](https://github.com/5starkarma/video-razor/blob/master/data/examples/section-7.png?raw=true "Input image")  |  ![alt text](https://github.com/5starkarma/video-razor/blob/master/data/examples/section-8.png?raw=true "Output image") |  ![alt text](https://github.com/5starkarma/video-razor/blob/master/data/examples/section-9.png?raw=true "Output image")
 ---
 
 A package for slicing a video into N**2 sections. 

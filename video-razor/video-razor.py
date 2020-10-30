@@ -64,8 +64,8 @@ class VideoRazor:
                 # For each frame in frames
                 for frame in self.get_frames():
                     # Get roi from frame
-                    frame = frame[int(i*roi_h): int(i*roi_h) + int(roi_h),
-                                  int(j*roi_w): int(j*roi_w) + int(roi_w)]
+                    frame = frame[int(i * roi_h): int(i * roi_h) + int(roi_h),
+                                  int(j * roi_w): int(j * roi_w) + int(roi_w)]
                     frames.append(frame)
         return frames
 
