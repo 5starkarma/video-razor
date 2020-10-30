@@ -13,7 +13,7 @@ class TestVideoRazor(unittest.TestCase):
             os.makedirs('tests/output')
         self.input = 'tests/test_data/test.mp4'
         self.output = 'tests/output/out'
-        self.slices = 3
+        self.slices = np.random.randint(1, 5)
         self.razor = VideoRazor(self.input, self.output, self.slices)
 
     def tearDown(self) -> None:
@@ -41,11 +41,14 @@ class TestVideoRazor(unittest.TestCase):
         roi_h, roi_w = self.razor.get_roi_measurements()
         assert isinstance(roi_h, float)
         assert isinstance(roi_w, float)
-        self.assertEqual((roi_h, roi_w), (160.0, 213.33333333333334))
+        h, w, _ = self.razor.get_frames()[0].shape
+        h = h / self.slices
+        w = w / self.slices
+        self.assertEqual((roi_h, roi_w), (h, w))
 
     def test_get_roi_frames(self):
         # Should be 9x the get_frames method
-        self.assertEqual(len(self.razor.get_frames()) * 9, len(self.razor.get_roi_frames()))
+        self.assertEqual(len(self.razor.get_frames()) * self.slices, len(self.razor.get_roi_frames()))
         assert isinstance(self.razor.get_roi_frames(), (list, np.ndarray))
         assert isinstance(self.razor.get_roi_frames()[0], (list, np.ndarray))
         assert hasattr(self.razor.get_roi_frames(), '__len__')
