@@ -10,6 +10,9 @@ class TestVideoRazor(unittest.TestCase):
         self.razor = VideoRazor('tests/test_data/test.mp4', 'tests/output/out', 3)
         # Create output folder and test that videos output
 
+    def tearDown(self) -> None:
+        pass
+
     def test_initial_values(self):
         assert self.razor.input_path == 'tests/test_data/test.mp4'
         assert self.razor.output_path == 'tests/output/out'
@@ -41,9 +44,6 @@ class TestVideoRazor(unittest.TestCase):
         pass
 
     def test_split_frames_list(self):
-        pass
-
-    def tearDown(self) -> None:
         pass
 
 
