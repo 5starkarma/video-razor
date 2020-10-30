@@ -7,14 +7,14 @@ from video_razor.razor import VideoRazor
 class TestVideoRazor(unittest.TestCase):
 
     def setUp(self):
-        # Create output folder and test that videos output <----
+        # TODO: Create output folder and test that videos output <----
         self.input = 'tests/test_data/test.mp4'
         self.output = 'tests/output/out'
         self.slices = 3
         self.razor = VideoRazor(self.input, self.output, self.slices)
 
     def tearDown(self) -> None:
-        # Delete output folder and files
+        # TODO: Delete output folder and files
         pass
 
     def test_initial_values(self):
@@ -49,13 +49,20 @@ class TestVideoRazor(unittest.TestCase):
         assert hasattr(self.razor.get_roi_frames(), '__len__')
 
     def test_create_output_path(self):
-        pass
+        output_path = self.razor.create_output_path()
+        assert isinstance(output_path, str)
+        assert output_path.endswith('.mp4')
 
     def test_get_num_videos(self):
-        pass
+        self.assertEqual(self.razor.get_num_videos(), self.slices * self.slices)
 
     def test_init_video_writer_list(self):
-        pass
+        num_videos = self.slices ** 2
+        self.assertEqual(len(self.razor.init_video_writer_list()), num_videos)
+        for none_obj in self.razor.init_video_writer_list():
+            self.assertIsNone(none_obj)
+        assert isinstance(self.razor.init_video_writer_list(), list)
+        assert hasattr(self.razor.init_video_writer_list(), '__len__')
 
     def test_split_frames_list(self):
         pass

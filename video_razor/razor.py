@@ -15,7 +15,7 @@ class VideoRazor:
         self.output_path = output_path
         if not isinstance(self.output_path, str):
             raise TypeError("Output must be a string")
-        self.splits = splits
+        self.splits = abs(splits)
         if not isinstance(self.splits, int):
             raise TypeError("Splits must be a int")
         self.fps = None
