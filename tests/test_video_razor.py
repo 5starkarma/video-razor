@@ -29,6 +29,8 @@ class TestVideoRazor(unittest.TestCase):
 
     def test_get_roi_measurements(self):
         roi_h, roi_w = self.razor.get_roi_measurements()
+        assert isinstance(roi_h, float)
+        assert isinstance(roi_w, float)
         self.assertEqual((roi_h, roi_w), (160.0, 213.33333333333334))
 
     def test_get_roi_frames(self):
