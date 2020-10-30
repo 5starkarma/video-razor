@@ -35,7 +35,7 @@ class VideoRazor:
         # Make sure video is being read
         if cap.isOpened():
             success, frame = cap.read()
-            frames = []
+            frames = list()
             while success:
                 frames.append(frame)
                 # Read new frame
@@ -128,7 +128,7 @@ class VideoRazor:
         # Get h, w of video sections
         roi_h, roi_w = self.get_roi_measurements()
         # Init list of Nones length of list
-        out_videos = self.init_video_writer_list
+        out_videos = self.init_video_writer_list()
         # Split list into list of lists
         frames_split = self.split_frames_list()
         # For each videos worth of frames
@@ -149,3 +149,11 @@ class VideoRazor:
                 out_videos[i].write(frame)
             # Release video writer
             out_videos[i].release()
+
+
+if __name__ == '__main__':
+    input_file = 'data/input/test.mp4'
+    output = 'data/output/test_out'
+
+    razor = VideoRazor(input_file, output, 3)
+    razor.slice()
