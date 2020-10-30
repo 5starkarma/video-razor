@@ -46,6 +46,12 @@ class TestVideoRazor(unittest.TestCase):
     def test_split_frames_list(self):
         pass
 
+    def test_create_videos(self):
+        pass
+
+    def test_slice(self):
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

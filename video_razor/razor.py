@@ -121,16 +121,7 @@ class VideoRazor:
         """
         return np.array_split(self.get_roi_frames(), self.get_num_videos())
 
-    def slice(self):
-        """
-        Main function which gets roi measurements
-        """
-        # Get h, w of video sections
-        roi_h, roi_w = self.get_roi_measurements()
-        # Init list of Nones length of list
-        out_videos = self.init_video_writer_list()
-        # Split list into list of lists
-        frames_split = self.split_frames_list()
+    def create_videos(self, frames_split, out_videos, roi_w, roi_h):
         # For each videos worth of frames
         for i in range(len(frames_split)):
             # Create output path
@@ -149,6 +140,18 @@ class VideoRazor:
                 out_videos[i].write(frame)
             # Release video writer
             out_videos[i].release()
+
+    def slice(self):
+        """
+        Main function which gets roi measurements
+        """
+        # Get h, w of video sections
+        roi_h, roi_w = self.get_roi_measurements()
+        # Init list of Nones length of list
+        out_videos = self.init_video_writer_list()
+        # Split list into list of lists
+        frames_split = self.split_frames_list()
+        self.create_videos(frames_split, out_videos, roi_w, roi_h)
 
 
 if __name__ == '__main__':
