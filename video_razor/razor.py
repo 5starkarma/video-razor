@@ -47,12 +47,12 @@ class VideoRazor:
         Gets the height and width each output video will be.
         :return:
         -------
-        images : list
-            Images which make up a video
+        height, width : float
+            height and width of region of interest
         """
         return map(lambda x: x / self.splits, self.get_frames()[0].shape[:2])
 
-    def get_roi(self):
+    def get_roi_frames(self):
         """
         Gets region of interest for each frame in the list of frames
         and appends it to a new list of frames.
@@ -93,17 +93,44 @@ class VideoRazor:
         # Apply counter to filename
         return filename.format(counter)
 
+    def get_num_videos(self):
+        """
+        Calculates how many videos will be output.
+        :return:
+        num_of_out_vids : int
+            Number of videos to be output
+        """
+        return self.splits ** 2
+
+    def init_video_writer_list(self):
+        """
+        Initializes a placeholder list of None(s) for VideoWriter
+        objects.
+        :return:
+        """
+        return [None] * self.get_num_videos()
+
+    def split_frames_list(self):
+        """
+        Splits frame list into sections which are the length of each
+        video to be output.
+        :return:
+        frames : list
+            List of lists of frames. inner list contains a full video's
+            frames.
+        """
+        return np.array_split(self.get_roi_frames(), self.get_num_videos())
+
     def slice(self):
+        """
+        Main function which gets roi measurements
+        """
         # Get h, w of video sections
         roi_h, roi_w = self.get_roi_measurements()
-        # Get number of videos to be output
-        num_videos = self.splits ** 2
-        # Input frames from video to list
-        frames = self.get_roi()
         # Init list of Nones length of list
-        out_videos = [None] * num_videos
+        out_videos = self.init_video_writer_list
         # Split list into list of lists
-        frames_split = np.array_split(frames, num_videos)
+        frames_split = self.split_frames_list()
         # For each videos worth of frames
         for i in range(len(frames_split)):
             # Create output path
