@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="video-razor",
     packages=['video-razor'],
-    version="0.0.1",
+    version="0.0.2",
     license='MIT',
     author="David Alford",
     author_email="firstlast678@gmail.com",
@@ -14,7 +14,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/5starkarma/video-razor",
-    download_url='https://github.com/5starkarma/video-razor/archive/0.0.1.tar.gz',
+    download_url='https://github.com/5starkarma/video-razor/archive/0.0.2.tar.gz',
     keywords=['OPENCV', 'VIDEO', 'CUT', 'SLICE', 'RAZOR'],
     install_requires=[
         'numpy',
