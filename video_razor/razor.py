@@ -18,6 +18,8 @@ class VideoRazor:
         self.splits = abs(splits)
         if not isinstance(self.splits, int):
             raise TypeError("Splits must be a int")
+        if self.splits < 1:
+            raise ValueError("Must be > 0")
         self.fps = None
 
     def get_frames(self):
