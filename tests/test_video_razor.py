@@ -7,12 +7,12 @@ from video_razor.razor import VideoRazor
 class TestVideoRazor(unittest.TestCase):
 
     def setUp(self):
-        self.razor = VideoRazor('data/test_data/test.mp4', 'data/output/out', 3)
+        self.razor = VideoRazor('tests/test_data/test.mp4', 'tests/output/out', 3)
         # Create output folder and test that videos output
 
     def test_initial_values(self):
-        assert self.razor.input_path == 'data/test_data/test.mp4'
-        assert self.razor.output_path == 'data/output/out'
+        assert self.razor.input_path == 'tests/test_data/test.mp4'
+        assert self.razor.output_path == 'tests/output/out'
         assert self.razor.splits == 3
 
     def test_raise_init_type_error(self):
@@ -20,7 +20,8 @@ class TestVideoRazor(unittest.TestCase):
             VideoRazor(1, 1, 1)
 
     def test_get_frames(self):
-        assert isinstance(self.razor.get_frames(), list)
+        assert isinstance(self.razor.get_frames(), (list, np.ndarray))
+        assert isinstance(self.razor.get_frames()[0], (list, np.ndarray))
         assert hasattr(self.razor.get_frames(), '__len__')
 
     def test_get_roi_measurements(self):

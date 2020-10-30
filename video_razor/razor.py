@@ -152,8 +152,8 @@ class VideoRazor:
 
 
 if __name__ == '__main__':
-    input_file = 'data/test_data/test.mp4'
-    output = 'data/output/test_out'
+    input_file = 'tests/test_data/test.mp4'
+    output = 'tests/output/test_out'
 
     razor = VideoRazor(input_file, output, 3)
     razor.slice()
