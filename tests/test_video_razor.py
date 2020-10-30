@@ -65,7 +65,9 @@ class TestVideoRazor(unittest.TestCase):
         assert hasattr(self.razor.init_video_writer_list(), '__len__')
 
     def test_split_frames_list(self):
-        pass
+        self.assertNotEqual(len(self.razor.get_roi_frames()), len(self.razor.split_frames_list()))
+        self.assertEqual(self.slices ** 2, len(self.razor.split_frames_list()))
+        self.assertEqual(self.razor.get_num_videos(), len(self.razor.split_frames_list()))
 
     def test_create_videos(self):
         pass
