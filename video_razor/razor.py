@@ -122,6 +122,17 @@ class VideoRazor:
         return np.array_split(self.get_roi_frames(), self.get_num_videos())
 
     def create_videos(self, frames_split, out_videos, roi_w, roi_h):
+        """
+        Creates all output videos from frame list.
+        :param frames_split: list
+            List of NumPy arrays
+        :param out_videos: list
+            List of None(s)
+        :param roi_w: float
+            Region of Interest width
+        :param roi_h: float
+            Region of Interest height
+        """
         # For each videos worth of frames
         for i in range(len(frames_split)):
             # Create output path
@@ -143,7 +154,7 @@ class VideoRazor:
 
     def slice(self):
         """
-        Main function which gets roi measurements
+        Main function.
         """
         # Get h, w of video sections
         roi_h, roi_w = self.get_roi_measurements()
