@@ -6,7 +6,7 @@ import cv2
 
 class VideoRazor:
     """
-    Slices videos into N quadrants.
+    Slices videos into N sections.
     """
     def __init__(self, input_path, output_path, splits):
         self.input_path = input_path
