@@ -1,4 +1,5 @@
 import unittest
+import numpy as np
 
 from video_razor.razor import VideoRazor
 
@@ -8,9 +9,37 @@ class TestVideoRazor(unittest.TestCase):
     def setUp(self):
         self.razor = VideoRazor('data/input/test.mp4', 'data/output/out', 3)
 
+    def test_initial_values(self):
+        assert self.razor.input_path == 'data/input/test.mp4'
+        assert self.razor.output_path == 'data/output/out'
+        assert self.razor.splits == 3
+
+    def test_raise_init_type_error(self):
+        with self.assertRaises(TypeError):
+            VideoRazor(1, 1, 1)
+
     def test_get_frames(self):
-        frame_list = self.razor.get_frames()
-        self.assertIs(frame_list, list())
+        assert isinstance(self.razor.get_frames(), (list, np.ndarray))
+        assert isinstance(self.razor.get_frames()[0], (list, np.ndarray))
+        assert hasattr(self.razor.get_frames(), '__len__')
+
+    def test_get_roi_measurements(self):
+        pass
+
+    def test_get_roi_frames(self):
+        pass
+
+    def test_create_output_path(self):
+        pass
+
+    def test_get_num_videos(self):
+        pass
+
+    def test_init_video_writer_list(self):
+        pass
+
+    def test_split_frames_list(self):
+        pass
 
     def tearDown(self) -> None:
         pass
