@@ -48,7 +48,8 @@ class TestVideoRazor(unittest.TestCase):
 
     def test_get_roi_frames(self):
         # Should be 9x the get_frames method
-        self.assertEqual(len(self.razor.get_frames()) * (self.slices ** 2), len(self.razor.get_roi_frames()))
+        self.assertEqual(len(self.razor.get_frames()) * (self.slices ** 2),
+                         len(self.razor.get_roi_frames()))
         assert isinstance(self.razor.get_roi_frames(), (list, np.ndarray))
         assert isinstance(self.razor.get_roi_frames()[0], (list, np.ndarray))
         assert hasattr(self.razor.get_roi_frames(), '__len__')
@@ -59,20 +60,25 @@ class TestVideoRazor(unittest.TestCase):
         assert output_path.endswith('.mp4')
 
     def test_get_num_videos(self):
-        self.assertEqual(self.razor.get_num_videos(), self.slices * self.slices)
+        self.assertEqual(self.razor.get_num_videos(),
+                         self.slices * self.slices)
 
     def test_init_video_writer_list(self):
         num_videos = self.slices ** 2
-        self.assertEqual(len(self.razor.init_video_writer_list()), num_videos)
+        self.assertEqual(len(self.razor.init_video_writer_list()),
+                         num_videos)
         for none_obj in self.razor.init_video_writer_list():
             self.assertIsNone(none_obj)
         assert isinstance(self.razor.init_video_writer_list(), list)
         assert hasattr(self.razor.init_video_writer_list(), '__len__')
 
     def test_split_frames_list(self):
-        self.assertNotEqual(len(self.razor.get_roi_frames()), len(self.razor.split_frames_list()))
-        self.assertEqual(self.slices ** 2, len(self.razor.split_frames_list()))
-        self.assertEqual(self.razor.get_num_videos(), len(self.razor.split_frames_list()))
+        self.assertNotEqual(len(self.razor.get_roi_frames()),
+                            len(self.razor.split_frames_list()))
+        self.assertEqual(self.slices ** 2,
+                         len(self.razor.split_frames_list()))
+        self.assertEqual(self.razor.get_num_videos(),
+                         len(self.razor.split_frames_list()))
 
     def test_create_videos(self):
         # Get h, w of video sections
